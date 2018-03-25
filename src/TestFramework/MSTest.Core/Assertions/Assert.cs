@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
 namespace Microsoft.VisualStudio.TestTools.UnitTesting
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Reflection;
@@ -570,6 +570,37 @@ namespace Microsoft.VisualStudio.TestTools.UnitTesting
         }
 
         /// <summary>
+        /// Tests whether the IEnumerbles are equal and throws an exception
+        /// if they are not equal. Different numeric types are treated
+        /// as unequal even if the logical values are equal. 42L is not equal to 42.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of IEnumerables to compare.
+        /// </typeparam>
+        /// <param name="expected">
+        /// The first IEnumerable to compare. This is the value the tests expects.
+        /// </param>
+        /// <param name="actual">
+        /// The second IEnumerable to compare. This is the value produced by the code under test.
+        /// </param>
+        /// <param name="message">
+        /// The message to include in the exception when <paramref name="actual"/>
+        /// is not equal to <paramref name="expected"/>. The message is shown in
+        /// test results.
+        /// </param>
+        /// <param name="parameters">
+        /// An array of parameters to use when formatting <paramref name="message"/>.
+        /// </param>
+        /// <exception cref="AssertFailedException">
+        /// Thrown if <paramref name="expected"/> is not equal to
+        /// <paramref name="actual"/>.
+        /// </exception>
+        public static void AreEqual<T>(IEnumerable<T> expected, IEnumerable<T> actual, string message = null, params object[] parameters)
+        {
+            throw new NotImplementedException("TODO: Write this");
+        }
+
+        /// <summary>
         /// Tests whether the specified values are unequal and throws an exception
         /// if the two values are equal. Different numeric types are treated
         /// as unequal even if the logical values are equal. 42L is not equal to 42.
@@ -618,6 +649,37 @@ namespace Microsoft.VisualStudio.TestTools.UnitTesting
         public static void AreNotEqual<T>(T notExpected, T actual, string message)
         {
             AreNotEqual(notExpected, actual, message, null);
+        }
+
+        /// <summary>
+        /// Tests whether the specified values are unequal and throws an exception
+        /// if the two values are equal. Different numeric types are treated
+        /// as unequal even if the logical values are equal. 42L is not equal to 42.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of values to compare.
+        /// </typeparam>
+        /// <param name="notExpected">
+        /// The first IEnumerable to compare. This is the IEnumerable the test expects not
+        /// to match <paramref name="actual"/>.
+        /// </param>
+        /// <param name="actual">
+        /// The second IEnumerable to compare. This is the IEnumerable produced by the code under test.
+        /// </param>
+        /// <param name="message">
+        /// The message to include in the exception when <paramref name="actual"/>
+        /// is equal to <paramref name="notExpected"/>. The message is shown in
+        /// test results.
+        /// </param>
+        /// <param name="parameters">
+        /// An array of parameters to use when formatting <paramref name="message"/>.
+        /// </param>
+        /// <exception cref="AssertFailedException">
+        /// Thrown if <paramref name="notExpected"/> is equal to <paramref name="actual"/>.
+        /// </exception>
+        public static void AreNotEqual<T>(IEnumerable<T> notExpected, IEnumerable<T> actual, string message = null, params object[] parameters)
+        {
+            throw new NotImplementedException("TODO: Write this.");
         }
 
         /// <summary>
